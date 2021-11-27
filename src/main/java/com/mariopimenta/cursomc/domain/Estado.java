@@ -16,8 +16,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
-@Entity
 @Getter @Setter
+@Entity
 public class Estado implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
