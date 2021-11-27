@@ -14,12 +14,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter
+@NoArgsConstructor
 @Entity
 public class Cliente  implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -37,6 +41,7 @@ public class Cliente  implements Serializable {
 	@Setter(value = AccessLevel.NONE)
 	private Integer tipo;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
 	

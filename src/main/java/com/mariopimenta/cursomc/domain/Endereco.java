@@ -9,13 +9,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
 @Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 @Entity
 public class Endereco  implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -30,6 +33,7 @@ public class Endereco  implements Serializable {
 	private String bairro;
 	private String cep;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
