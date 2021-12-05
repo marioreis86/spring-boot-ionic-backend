@@ -14,7 +14,6 @@ import com.mariopimenta.cursomc.CursomcApplication;
 class CursomcApplicationTests {
 
 	@Test
-	
 	void contextLoads() {
 		
 		assertThat("Mario")

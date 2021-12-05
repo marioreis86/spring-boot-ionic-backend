@@ -1,20 +1,22 @@
-package com.mariopimenta.cursomc.domain;
+package com.mariopimenta.cursomc.domain.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum TipoCliente {
-	PESSOAFISICA(1, "Pessoa Física"), PESSOAJURIDICA(2, "Pessoa Jurídica");
+public enum EstadoPagamento {
+	PENDENTE(1, "Pendente"), 
+	QUITADO(2, "Quitado"), 
+	CANCELADO(3, "Cancelado");
 	
 	private int cod;
 	private String descricao;
 	
-	public static TipoCliente toEnum(Integer cod) {
+	public static EstadoPagamento toEnum(Integer cod) {
 		if (cod == null) return null;
 		
-		for (TipoCliente x : TipoCliente.values()) {
+		for (EstadoPagamento x : EstadoPagamento.values()) {
 			if (cod.equals(x.getCod()))
 				return x;
 		}
