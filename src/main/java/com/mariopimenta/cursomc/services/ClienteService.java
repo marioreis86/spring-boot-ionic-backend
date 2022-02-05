@@ -15,7 +15,6 @@ import com.mariopimenta.cursomc.domain.Cidade;
 import com.mariopimenta.cursomc.domain.Cliente;
 import com.mariopimenta.cursomc.domain.Endereco;
 import com.mariopimenta.cursomc.domain.enums.TipoCliente;
-import com.mariopimenta.cursomc.dto.ClienteDTO;
 import com.mariopimenta.cursomc.dto.ClienteNewDTO;
 import com.mariopimenta.cursomc.repositories.CidadeRepository;
 import com.mariopimenta.cursomc.repositories.ClienteRepository;
