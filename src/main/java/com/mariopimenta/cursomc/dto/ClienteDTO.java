@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.Length;
 
 import com.mariopimenta.cursomc.domain.Cliente;
 import com.mariopimenta.cursomc.enums.Validacoes;
+import com.mariopimenta.cursomc.services.validation.ClienteUpdate;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import lombok.Setter;
 
 @NoArgsConstructor
 @Getter @Setter
+@ClienteUpdate
 public class ClienteDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
