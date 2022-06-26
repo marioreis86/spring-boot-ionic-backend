@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mariopimenta.cursomc.domain.ItemPedido;
 import com.mariopimenta.cursomc.domain.PagamentoComBoleto;
@@ -22,7 +23,7 @@ public class PedidoService {
 	@Autowired private PedidoRepository repo;	
 	@Autowired private BoletoService boletoService;	
 	@Autowired private PagamentoRepository pagamentoRepository;	
-	@Autowired private ProdutoRepository produtoRepository;	
+	@Autowired private ProdutoService produtoService;	
 	@Autowired private ItemPedidoRepository itemPedidoRepository;
 	
 	public Pedido find(Integer id) {
@@ -32,12 +33,13 @@ public class PedidoService {
 	 	);
 	}
 	
+	@Transactional
 	public Pedido insert(Pedido obj) {
 		obj.setId(null);
 		obj.setInstante(new Date());
 		obj.getPagamento().setEstado(EstadoPagamento.PENDENTE);
 		obj.getPagamento().setPedido(obj);
-		
+			 
 		if (obj.getPagamento() instanceof PagamentoComBoleto) {
 			PagamentoComBoleto pagto = (PagamentoComBoleto) obj.getPagamento();
 			boletoService.preencherPagamentoComBoleto(pagto, obj.getInstante());
@@ -48,7 +50,7 @@ public class PedidoService {
 		
 		for (ItemPedido ip : obj.getItens()) {
 			ip.setDesconto(0.0);
-			ip.setPreco(produtoRepository.findById(ip.getProduto().getId()).get().getPreco());
+			ip.setPreco(produtoService.find(ip.getProduto().getId()).getPreco());
 			ip.setPedido(obj);
 		}
 		
